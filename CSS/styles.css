@@ -3,6 +3,7 @@
     padding: 0;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: white;
+    box-sizing: border-box;
 }
 
 h1 {
@@ -39,6 +40,7 @@ button {
     background-size: 200% 100%;
     transition: border .5s, background-position .5s;
     margin-bottom: 10px;
+    font-size: 1.1rem;
 }
 
 button:focus {
@@ -53,4 +55,57 @@ button:hover {
 
 span {
     color: orange;
+}
+
+#piano {
+    margin: 20px;
+    height: 100px;
+    width: 494px;
+    border: solid 2px rgb(107, 107, 107);
+    display: flex;
+    box-shadow: 0px 5px 20px black;
+}
+
+.uneGamme {
+    display: flex;
+    position: relative;
+}
+
+#piano .uneGamme .noteBlanche {
+    width: 35px;
+    height: 96px;
+    border: solid 2px white;
+    background-color: rgb(119, 119, 119);
+}
+
+#piano .uneGamme .noteNoire {
+    width: 15px;
+    height: 58px;
+    border: solid 2px rgb(29, 29, 29);
+    background-color: rgb(29, 29, 29);
+}
+
+.noteCSharp {
+    position: absolute;
+    left: 28px;
+}
+
+.noteDSharp {
+    position: absolute;
+    left: 63px;
+}
+
+.noteFSharp {
+    position: absolute;
+    left: 133px;
+}
+
+.noteGSharp {
+    position: absolute;
+    left: 168px;
+}
+
+.noteASharp {
+    position: absolute;
+    left: 203px;
 }

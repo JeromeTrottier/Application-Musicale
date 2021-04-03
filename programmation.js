@@ -19,8 +19,17 @@ function generationGamme() {
     let gammeTemps = Math.ceil(Math.random() * 2);
     console.log(gammeTemps);
     if (gammeTemps == 1){
-        document.getElementById("gammeTemps").innerHTML = "Majeur";
+        document.getElementById("gammeTemps").innerHTML = " Major";
     } else {
-        document.getElementById("gammeTemps").innerHTML = "Mineur";
+        document.getElementById("gammeTemps").innerHTML = " Minor";
+    }
+    let gammeSignature = Math.ceil(Math.random() * 3);
+    console.log(gammeSignature);
+    if (gammeSignature == 1) {
+        document.getElementById("gammeSignature").innerHTML = " Natural";
+    } else if (gammeSignature == 2) {
+        document.getElementById("gammeSignature").innerHTML = " Flat";
+    } else {
+        document.getElementById("gammeSignature").innerHTML = " Sharp"    
     }
 }
