@@ -4,7 +4,7 @@ function generateScale() {
     setScaleNote();
     setKeySignature();
     setScaleType();
-    
+
 }
 function setScaleNote() {
     const scaleNotes = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
@@ -53,19 +53,37 @@ const minorScalePattern = [2, 1, 2, 2, 1, 2, 2];
 function highlightScales() {
     //clearPreviousHighlights();
     //const keys = getElementsWithNoteClass(notes);
-    getScaleNote();
-    //const getIdxFirstNote = getFirstElementIdxInScale();
+    const keys = getElementsWithNoteClass();
+
+    const getIdxFirstNote = getFirstElementIdxInScale(keys);
+
     //highlightKeys();
 
     /*- Enlever les previous highlights
       - Aller chercher la note de la gamme
       - Associer cette note avec son Pattern
       - Donenr le highlight aux bonnes touches*/
-    
+
 }
-function getScaleNote() {
-    const keys = document.getElementsByClassName("note");
-    console.log(keys[scaleNote]);
+
+function getFirstElementIdxInScale(keys) {
+  // exemple pour c naturel
+  return keys.findIndex(k => k.classList.includes('noteC'));
+}
+
+function getElementsWithNoteClass() {
+  const keys = document.getElementsByClassName("note");
+  const keysArray = convertNodeListToArray(keys);
+  console.log(keysArray);
+  return keysArray;
+}
+
+function convertNodeListToArray(nodeList) {
+  const array = [];
+  for (let i = 0; i < nodeList.length; i++) {
+    array.push(nodeList[i]);
+  }
+  return array;
 }
 /*function getElementsWithNoteClass(notes) {
     notes = document.getElementsByClassName("note");
