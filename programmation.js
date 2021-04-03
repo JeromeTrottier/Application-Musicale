@@ -1,37 +1,24 @@
-function generationGamme() {
-    let gammeNote = Math.ceil(Math.random() * 7);
-    console.log(gammeNote);
-    if (gammeNote == 1){
-        document.getElementById("gammeNote").innerHTML = "A";
-    } else if (gammeNote == 2) {
-        document.getElementById("gammeNote").innerHTML = "B";
-    } else if(gammeNote == 3) {
-        document.getElementById("gammeNote").innerHTML = "C";
-    } else if(gammeNote == 4) {
-        document.getElementById("gammeNote").innerHTML = "D";
-    } else if(gammeNote == 5) {
-        document.getElementById("gammeNote").innerHTML = "E";
-    } else if(gammeNote == 6) {
-        document.getElementById("gammeNote").innerHTML = "F";
-    } else {
-        document.getElementById("gammeNote").innerHTML = "G";
-    }
-    let gammeTemps = Math.ceil(Math.random() * 2);
-    console.log(gammeTemps);
-    if (gammeTemps == 1){
-        document.getElementById("gammeTemps").innerHTML = " Major";
-    } else {
-        document.getElementById("gammeTemps").innerHTML = " Minor";
-    }
-    let gammeSignature = Math.ceil(Math.random() * 3);
-    console.log(gammeSignature);
-    if (gammeSignature == 1) {
-        document.getElementById("gammeSignature").innerHTML = " Natural";
-    } else if (gammeSignature == 2) {
-        document.getElementById("gammeSignature").innerHTML = " Flat";
-    } else {
-        document.getElementById("gammeSignature").innerHTML = " Sharp"    
-    }
+function generateScale() {
+
+    getScaleNote();
+    getKeySignature();
+    getScaleType();
+    
+}
+function getScaleNote() {
+    const scaleNotes = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
+    const scaleNote = Math.ceil(Math.random() * 7) - 1;
+    document.getElementById('scaleNote').innerHTML = scaleNotes[scaleNote];
+}
+function getKeySignature() {
+    const keySignatures = [' Natural', ' Flat', ' Sharp'];
+    const keySignature = Math.ceil(Math.random() * 3) - 1;
+    document.getElementById('keySignature').innerHTML = keySignatures[keySignature];
+}
+function getScaleType() {
+    const scaleTypes = [' Major', ' Minor'];
+    const scaleType = Math.ceil(Math.random() * 2) - 1;
+    document.getElementById('scaleType').innerHTML = scaleTypes[scaleType];
 }
 
 const gammeHtml = `<div class="uneGamme"><div class="noteC noteBlanche"></div>
