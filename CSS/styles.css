@@ -66,19 +66,19 @@ span {
     box-shadow: 0px 5px 20px black;
 }
 
-.uneGamme {
+.oneScale {
     display: flex;
     position: relative;
 }
 
-#piano .uneGamme .noteBlanche {
+#piano .oneScale .whiteNote {
     width: 35px;
     height: 96px;
     border: solid 2px white;
     background-color: rgb(119, 119, 119);
 }
 
-#piano .uneGamme .noteNoire {
+#piano .oneScale .blackNote {
     width: 15px;
     height: 58px;
     border: solid 2px rgb(29, 29, 29);

@@ -1,43 +1,43 @@
 function generateScale() {
 
-    getScaleNote();
-    getKeySignature();
-    getScaleType();
+    setScaleNote();
+    setKeySignature();
+    setScaleType();
     
 }
-function getScaleNote() {
+function setScaleNote() {
     const scaleNotes = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
     const scaleNote = Math.ceil(Math.random() * 7) - 1;
     document.getElementById('scaleNote').innerHTML = scaleNotes[scaleNote];
 }
-function getKeySignature() {
+function setKeySignature() {
     const keySignatures = [' Natural', ' Flat', ' Sharp'];
     const keySignature = Math.ceil(Math.random() * 3) - 1;
     document.getElementById('keySignature').innerHTML = keySignatures[keySignature];
 }
-function getScaleType() {
+function setScaleType() {
     const scaleTypes = [' Major', ' Minor'];
     const scaleType = Math.ceil(Math.random() * 2) - 1;
     document.getElementById('scaleType').innerHTML = scaleTypes[scaleType];
 }
 
-const gammeHtml = `<div class="uneGamme"><div class="noteC noteBlanche"></div>
-                <div class="noteCSharp noteNoire"></div>
-                <div class="noteD noteBlanche"></div>
-                <div class="noteDSharp noteNoire"></div>
-                <div class="noteE noteBlanche"></div>
-                <div class="noteF noteBlanche"></div>
-                <div class="noteFSharp noteNoire"></div>
-                <div class="noteG noteBlanche"></div>
-                <div class="noteGSharp noteNoire"></div>
-                <div class="noteA noteBlanche"></div>
-                <div class="noteASharp noteNoire"></div>
-                <div class="noteB noteBlanche"></div></div>`;
+const htmlScale = `<div class="oneScale"><div class="noteC whiteNote"></div>
+                <div class="noteCSharp blackNote"></div>
+                <div class="noteD whiteNote"></div>
+                <div class="noteDSharp blackNote"></div>
+                <div class="noteE whiteNote"></div>
+                <div class="noteF whiteNote"></div>
+                <div class="noteFSharp blackNote"></div>
+                <div class="noteG whiteNote"></div>
+                <div class="noteGSharp blackNote"></div>
+                <div class="noteA whiteNote"></div>
+                <div class="noteASharp blackNote"></div>
+                <div class="noteB whiteNote"></div></div>`;
 
-function drawGammes() {
+function drawScales() {
   const pianoElement = document.getElementById('piano');
   for (let i = 0; i < 2; i++) {
-    pianoElement.innerHTML += gammeHtml;
+    pianoElement.innerHTML += htmlScale;
   }
 }
 
