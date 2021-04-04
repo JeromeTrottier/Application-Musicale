@@ -4,7 +4,7 @@ function generateScale() {
     setScaleNote();
     setKeySignature();
     setScaleType();
-
+    highlightScales();
 }
 function setScaleNote() {
     const scaleNotes = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
@@ -56,7 +56,7 @@ function highlightScales() {
     const keys = getElementsWithNoteClass();
 
     const getIdxFirstNote = getFirstElementIdxInScale(keys);
-
+    console.log(getIdxFirstNote);
     //highlightKeys();
 
     /*- Enlever les previous highlights
@@ -68,7 +68,8 @@ function highlightScales() {
 
 function getFirstElementIdxInScale(keys) {
   // exemple pour c naturel
-  return keys.findIndex(k => k.classList.includes('noteC'));
+  
+  return keys.findIndex(k => k.classList.contains('noteC'));
 }
 
 function getElementsWithNoteClass() {
