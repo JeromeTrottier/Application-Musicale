@@ -1,21 +1,15 @@
 
 function generateScale() {
-
     setScaleNote();
-    setKeySignature();
     setScaleType();
     highlightScales();
 }
 function setScaleNote() {
-    const scaleNotes = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
-    const scaleNote = Math.ceil(Math.random() * 7) - 1;
+    const scaleNotes = ['C', 'C#', 'Db', 'D', 'D#', 'Eb', 'E', 'F', 'F#', 'Gb', 'G', 'G#', 'Ab', 'A', 'A#', 'Bb', 'B'];
+    console.log(scaleNotes);
+    window.scaleNote = Math.ceil(Math.random() * 17) - 1;
     document.getElementById('scaleNote').innerHTML = scaleNotes[scaleNote];
     console.log(scaleNote);
-}
-function setKeySignature() {
-    const keySignatures = [' Natural', ' Flat', ' Sharp'];
-    const keySignature = Math.ceil(Math.random() * 3) - 1;
-    document.getElementById('keySignature').innerHTML = keySignatures[keySignature];
 }
 function setScaleType() {
     const scaleTypes = [' Major', ' Minor'];
@@ -24,16 +18,16 @@ function setScaleType() {
 }
 
 const htmlScale = `<div class="oneScale"><div class="noteC whiteNote note"></div>
-                <div class="noteCSharp blackNote note"></div>
+                <div class="noteCSharp noteDFlat blackNote note"></div>
                 <div class="noteD whiteNote note"></div>
-                <div class="noteDSharp blackNote note"></div>
+                <div class="noteDSharp noteEFlat blackNote note"></div>
                 <div class="noteE whiteNote note"></div>
                 <div class="noteF whiteNote note"></div>
-                <div class="noteFSharp blackNote note"></div>
+                <div class="noteFSharp noteGFlat blackNote note"></div>
                 <div class="noteG whiteNote note"></div>
-                <div class="noteGSharp blackNote note"></div>
+                <div class="noteGSharp noteAFlat blackNote note"></div>
                 <div class="noteA whiteNote note"></div>
-                <div class="noteASharp blackNote note"></div>
+                <div class="noteASharp noteBFlat blackNote note"></div>
                 <div class="noteB whiteNote note"></div></div>`;
 
 function drawScales() {
@@ -68,8 +62,10 @@ function highlightScales() {
 
 function getFirstElementIdxInScale(keys) {
   // exemple pour c naturel
-  
-  return keys.findIndex(k => k.classList.contains('noteC'));
+  const notesPossible = ['noteC', 'noteCSharp', 'noteDFlat', 'noteD', 'noteDSharp', 'noteEFlat', 'noteE', 'noteF', 'noteFSharp', 'noteGFlat', 'noteG', 'noteGSharp', 'noteAFlat', 'noteA', 'noteASharp', 'noteBFlat', 'noteB'];
+  console.log(scaleNote);
+  console.log(notesPossible[scaleNote]);
+  return keys.findIndex(k => k.classList.contains(notesPossible[scaleNote]));
 }
 
 function getElementsWithNoteClass() {
@@ -86,6 +82,3 @@ function convertNodeListToArray(nodeList) {
   }
   return array;
 }
-/*function getElementsWithNoteClass(notes) {
-    notes = document.getElementsByClassName("note");
-}*/
