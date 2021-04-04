@@ -13,7 +13,7 @@ function setScaleNote() {
 }
 function setScaleType() {
     const scaleTypes = [' Major', ' Minor'];
-    const scaleType = Math.ceil(Math.random() * 2) - 1;
+    window.scaleType = Math.ceil(Math.random() * 2) - 1;
     document.getElementById('scaleType').innerHTML = scaleTypes[scaleType];
 }
 
@@ -41,8 +41,8 @@ window.addEventListener('load', () => {
   drawScales();
 })
 
-const majorScalePattern = [2, 2, 1, 2, 2, 2, 1];
-const minorScalePattern = [2, 1, 2, 2, 1, 2, 2];
+const majorScalePattern = [0, 2, 4, 5, 7, 9, 11];
+const minorScalePattern = [0, 2, 3, 5, 7, 8, 10];
 
 function highlightScales() {
     //clearPreviousHighlights();
@@ -65,7 +65,31 @@ function getFirstElementIdxInScale(keys) {
   const notesPossible = ['noteC', 'noteCSharp', 'noteDFlat', 'noteD', 'noteDSharp', 'noteEFlat', 'noteE', 'noteF', 'noteFSharp', 'noteGFlat', 'noteG', 'noteGSharp', 'noteAFlat', 'noteA', 'noteASharp', 'noteBFlat', 'noteB'];
   console.log(scaleNote);
   console.log(notesPossible[scaleNote]);
+  const firstValue = keys.findIndex(k => k.classList.contains(notesPossible[scaleNote]));
+  const scale = [];
+  if(scaleType == 0){
+    for (let i = 0; i < majorScalePattern.length; i++){
+      if((majorScalePattern[i] + firstValue) >= 12){
+        scale.push(firstValue + majorScalePattern[i] - 12);
+      } else {
+        scale.push(firstValue + majorScalePattern[i]);
+      }
+    }
+  } else {
+    for (let i = 0; i < minorScalePattern.length; i++){
+      if((minorScalePattern[i] + firstValue) >= 12){
+        scale.push(firstValue + minorScalePattern[i] - 12);
+      } else {
+        scale.push(firstValue + minorScalePattern[i]);
+      }
+    }
+  }
+  
+  console.log(scale);
+
   return keys.findIndex(k => k.classList.contains(notesPossible[scaleNote]));
+
+
 }
 
 function getElementsWithNoteClass() {
