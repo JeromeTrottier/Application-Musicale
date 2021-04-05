@@ -51,7 +51,7 @@ function highlightScales() {
 
     const getIdxFirstNote = getFirstElementIdxInScale(keys);
     console.log(getIdxFirstNote);
-    //highlightKeys();
+    highlightKeys(keys);
 
     /*- Enlever les previous highlights
       - Aller chercher la note de la gamme
@@ -62,33 +62,10 @@ function highlightScales() {
 
 function getFirstElementIdxInScale(keys) {
   // exemple pour c naturel
-  const notesPossible = ['noteC', 'noteCSharp', 'noteDFlat', 'noteD', 'noteDSharp', 'noteEFlat', 'noteE', 'noteF', 'noteFSharp', 'noteGFlat', 'noteG', 'noteGSharp', 'noteAFlat', 'noteA', 'noteASharp', 'noteBFlat', 'noteB'];
+  notesPossible = ['noteC', 'noteCSharp', 'noteDFlat', 'noteD', 'noteDSharp', 'noteEFlat', 'noteE', 'noteF', 'noteFSharp', 'noteGFlat', 'noteG', 'noteGSharp', 'noteAFlat', 'noteA', 'noteASharp', 'noteBFlat', 'noteB'];
   console.log(scaleNote);
   console.log(notesPossible[scaleNote]);
-  const firstValue = keys.findIndex(k => k.classList.contains(notesPossible[scaleNote]));
-  const scale = [];
-  if(scaleType == 0){
-    for (let i = 0; i < majorScalePattern.length; i++){
-      if((majorScalePattern[i] + firstValue) >= 12){
-        scale.push(firstValue + majorScalePattern[i] - 12);
-      } else {
-        scale.push(firstValue + majorScalePattern[i]);
-      }
-    }
-  } else {
-    for (let i = 0; i < minorScalePattern.length; i++){
-      if((minorScalePattern[i] + firstValue) >= 12){
-        scale.push(firstValue + minorScalePattern[i] - 12);
-      } else {
-        scale.push(firstValue + minorScalePattern[i]);
-      }
-    }
-  }
-  
-  console.log(scale);
-
-  return keys.findIndex(k => k.classList.contains(notesPossible[scaleNote]));
-
+   return keys.findIndex(k => k.classList.contains(notesPossible[scaleNote]));
 
 }
 
@@ -105,4 +82,32 @@ function convertNodeListToArray(nodeList) {
     array.push(nodeList[i]);
   }
   return array;
+}
+
+function highlightKeys(keys) {
+  const scaleIndexs = [];
+  if(scaleType == 0){
+    makeScaleArray(majorScalePattern, scaleIndexs, keys);
+  } else {
+    makeScaleArray(minorScalePattern, scaleIndexs, keys);
+  } 
+  console.log(scaleIndexs);
+  const scaleClasses = ['noteC', 'noteCSharp', 'noteD', 'noteDSharp', 'noteE', 'noteF', 'noteFSharp', 'noteG', 'noteGSharp', 'noteA', 'noteASharp', 'noteB'];
+  const finalScale = [];
+  for (let i = 0; i < scaleIndexs.length; i++){
+    finalScale.push(scaleClasses[scaleIndexs[i]]);
+  }
+  console.log(finalScale);
+  
+}
+
+function makeScaleArray(necessaryPattern, scale, keys){
+  const firstValue = getFirstElementIdxInScale(keys);
+  for (let i = 0; i < necessaryPattern.length; i++){
+    if((necessaryPattern[i] + firstValue) >= 12){
+      scale.push(firstValue + necessaryPattern[i] - 12);
+    } else {
+      scale.push(firstValue + necessaryPattern[i]);
+    }
+  }
 }
