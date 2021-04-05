@@ -45,7 +45,7 @@ const majorScalePattern = [0, 2, 4, 5, 7, 9, 11];
 const minorScalePattern = [0, 2, 3, 5, 7, 8, 10];
 
 function highlightScales() {
-    //clearPreviousHighlights();
+    clearPreviousHighlights();
     //const keys = getElementsWithNoteClass(notes);
     const keys = getElementsWithNoteClass();
 
@@ -101,7 +101,7 @@ function highlightKeys(keys) {
   for (let i = 0; i < 2; i++)
   for (let j = 0; j < finalScale.length; j++){
     const highlightedKey = document.getElementsByClassName(finalScale[j]);
-    console.log(highlightedKey);
+    //console.log(highlightedKey);
     highlightedKey[i].style.backgroundColor = "orange";
   }
 }
@@ -114,5 +114,15 @@ function makeScaleArray(necessaryPattern, scale, keys){
     } else {
       scale.push(firstValue + necessaryPattern[i]);
     }
+  }
+}
+function clearPreviousHighlights() {
+  const whiteKeysReset = document.getElementsByClassName("whiteNote");
+  const blackKeysReset = document.getElementsByClassName("blackNote");
+  for(let i = 0; i < whiteKeysReset.length; i++){
+    whiteKeysReset[i].style.backgroundColor = "rgb(119, 119, 119)";
+  }
+  for(let i = 0; i < blackKeysReset.length; i++){
+    blackKeysReset[i].style.backgroundColor = "rgb(29, 29, 29";
   }
 }
