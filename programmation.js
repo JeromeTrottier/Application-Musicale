@@ -102,7 +102,7 @@ function highlightKeys(keys) {
   for (let j = 0; j < finalScale.length; j++){
     const highlightedKey = document.getElementsByClassName(finalScale[j]);
     //console.log(highlightedKey);
-    highlightedKey[i].style.backgroundColor = "orange";
+    highlightedKey[i].style.animation = "transitionHighlightedKeys .7s 1 ease-in-out forwards";
   }
 }
 

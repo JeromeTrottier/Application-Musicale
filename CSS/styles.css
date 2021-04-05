@@ -75,18 +75,34 @@ span {
     position: relative;
 }
 
+@keyframes transitionHighlightedKeys {
+    0% {
+        background-position: 0% 0%;
+    }
+
+    100% {
+        background-position: 0% -100%;
+    }
+
+}
+
 #piano .oneScale .whiteNote {
     width: 35px;
     height: 96px;
     border: solid 2px white;
-    background-color: rgb(119, 119, 119);
+    /*background-color: rgb(119, 119, 119);*/
+    background: linear-gradient(to bottom, rgb(119, 119, 119) 50%, orange 50%);
+    background-size: 100% 200%;
+    /*animation: transitionHighlightedKeys .7s 1 ease-in-out forwards;*/
 }
 
 #piano .oneScale .blackNote {
     width: 15px;
     height: 58px;
     border: solid 2px rgb(29, 29, 29);
-    background-color: rgb(29, 29, 29);
+    /*background-color: rgb(29, 29, 29);*/
+    background: linear-gradient(to bottom, rgb(29, 29, 29) 50%, orange 50%);
+    background-size: 100% 200%;
 }
 
 .noteCSharp {
