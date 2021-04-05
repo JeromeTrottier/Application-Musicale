@@ -38,7 +38,7 @@ button {
     width: 200px;
     cursor: pointer;
     background-size: 200% 100%;
-    transition: border .5s, background-position .5s;
+    transition: border .5s, background-position .3s;
     margin-bottom: 10px;
     font-size: 1.1rem;
 }
@@ -50,7 +50,11 @@ button:focus {
 button:hover {
     background-position: -100% 0%;
     border: solid rgb(0, 39, 27) 2px;
-    transition-duration: .5s;
+    transition-duration: .3s;
+}
+
+button:active {
+    color: rgb(73, 73, 73);
 }
 
 span {
