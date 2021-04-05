@@ -98,7 +98,12 @@ function highlightKeys(keys) {
     finalScale.push(scaleClasses[scaleIndexs[i]]);
   }
   console.log(finalScale);
-  
+  for (let i = 0; i < 2; i++)
+  for (let j = 0; j < finalScale.length; j++){
+    const highlightedKey = document.getElementsByClassName(finalScale[j]);
+    console.log(highlightedKey);
+    highlightedKey[i].style.backgroundColor = "orange";
+  }
 }
 
 function makeScaleArray(necessaryPattern, scale, keys){
