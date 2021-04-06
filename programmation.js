@@ -123,6 +123,7 @@ function makeScaleArray(necessaryPattern, scale, keys){
     }
   }
 }
+
 function clearPreviousHighlights() {
   const whiteKeysReset = document.getElementsByClassName("whiteNote");
   const blackKeysReset = document.getElementsByClassName("blackNote");

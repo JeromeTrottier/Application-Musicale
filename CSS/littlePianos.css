@@ -1,0 +1,75 @@
+#basicChords {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+}
+
+#basicChords h3 {
+    grid-column: 1/3;
+    text-align: center;
+}
+
+.smallPiano:last-child {
+    grid-column: 1/3;
+}
+
+.smallPiano {
+    justify-self: center;
+    margin: 20px;
+    height: 50px;
+    width: 242px;
+    border: solid 2px rgb(51, 51, 51);
+    display: flex;
+    box-shadow: 0px 5px 20px black;
+}
+
+.oneSmallScale {
+    display: flex;
+    position: relative;
+}
+
+.smallPiano .oneSmallScale .smallWhiteNote {
+    width: 17px;
+    height: 46px;
+    border: solid 1px white;
+    /*background-color: rgb(119, 119, 119);*/
+    background: linear-gradient(to bottom, rgb(119, 119, 119) 50%, orange 50%);
+    background-size: 100% 200%;
+    /*animation: transitionHighlightedKeys .7s 1 ease-in-out forwards;*/
+}
+
+.smallPiano .oneSmallScale .smallBlackNote {
+    width: 8px;
+    height: 29px;
+    border: solid 2px rgb(29, 29, 29);
+    /*background-color: rgb(29, 29, 29);*/
+    background: linear-gradient(to bottom, rgb(29, 29, 29) 50%, orange 50%);
+    background-size: 100% 200%;
+}
+
+.smallNoteCSharp {
+    position: absolute;
+    left: 13px;
+}
+
+.smallNoteDSharp {
+    position: absolute;
+    left: 30px;
+}
+
+.smallNoteFSharp {
+    position: absolute;
+    left: 64px;
+}
+
+.smallNoteGSharp {
+    position: absolute;
+    left: 81px;
+}
+
+.smallNoteASharp {
+    position: absolute;
+    left: 98px;
+}
