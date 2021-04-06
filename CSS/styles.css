@@ -29,6 +29,13 @@ main {
     margin: 20px;
 }
 
+#container_scale {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 button {
     background: linear-gradient(to right, grey 50%, rgb(0, 199, 139) 50%);
     border: solid rgb(0, 199, 139) 2px;
@@ -57,7 +64,11 @@ button:active {
     color: rgb(73, 73, 73);
 }
 
-span {
+span:first-child {
+    color: rgb(0, 199, 139);
+}
+
+span:last-child {
     color: orange;
 }
 
