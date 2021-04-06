@@ -43,6 +43,8 @@ window.addEventListener('load', () => {
 
 const majorScalePattern = [0, 2, 4, 5, 7, 9, 11];
 const minorScalePattern = [0, 2, 3, 5, 7, 8, 10];
+const harmonicMinorScalePattern = [0, 2, 3, 5, 7, 8, 11];
+const melodicMinorScalePattern = [0, 2, 3, 5, 7, 9, 11];
 
 function highlightScales() {
     clearPreviousHighlights();
