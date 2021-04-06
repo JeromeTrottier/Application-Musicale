@@ -51,7 +51,7 @@ function highlightScales() {
 
     const getIdxFirstNote = getFirstElementIdxInScale(keys);
     console.log(getIdxFirstNote);
-    highlightKeys(keys);
+    setTimeout(highlightKeys(keys), 1000);
 
     /*- Enlever les previous highlights
       - Aller chercher la note de la gamme
@@ -98,11 +98,16 @@ function highlightKeys(keys) {
     finalScale.push(scaleClasses[scaleIndexs[i]]);
   }
   console.log(finalScale);
+  const specialNote = document.getElementsByClassName(finalScale[0])
+  console.log(specialNote);
   for (let i = 0; i < 2; i++)
   for (let j = 0; j < finalScale.length; j++){
     const highlightedKey = document.getElementsByClassName(finalScale[j]);
     //console.log(highlightedKey);
-    highlightedKey[i].style.backgroundColor = "orange";
+    highlightedKey[i].style.animation = "transitionHighlightedKeys .7s 1 ease-in-out forwards";
+    specialNote[i].style.background = "linear-gradient(to bottom, rgb(119, 119, 119) 50%, rgb(0, 199, 139) 50%)";
+    //specialNote[i].style.animation = "transitionColor .7s 1 ease-in-out forwards";
+    specialNote[i].style.backgroundSize = "100% 200%";
   }
 }
 
@@ -120,9 +125,15 @@ function clearPreviousHighlights() {
   const whiteKeysReset = document.getElementsByClassName("whiteNote");
   const blackKeysReset = document.getElementsByClassName("blackNote");
   for(let i = 0; i < whiteKeysReset.length; i++){
-    whiteKeysReset[i].style.backgroundColor = "rgb(119, 119, 119)";
+    whiteKeysReset[i].style.background = "linear-gradient(to bottom, rgb(119, 119, 119) 50%, orange 50%)";
+    whiteKeysReset[i].style.backgroundSize = "100% 200%";
+    whiteKeysReset[i].style.animation = "transitionHighlightedKeysReset .7s 1 ease-in-out forwards";
+
   }
   for(let i = 0; i < blackKeysReset.length; i++){
-    blackKeysReset[i].style.backgroundColor = "rgb(29, 29, 29";
+    blackKeysReset[i].style.background = "linear-gradient(to bottom, rgb(29, 29, 29) 50%, orange 50%)";
+    blackKeysReset[i].style.backgroundSize = "100% 200%";
+    blackKeysReset[i].style.animation = "transitionHighlightedKeysReset .7s 1 ease-in-out forwards";
+
   }
 }
