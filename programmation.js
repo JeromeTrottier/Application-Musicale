@@ -2,6 +2,8 @@ function generateScale() {
   setScaleNote();
   setScaleType();
   highlightScales();
+
+  setChords();
 }
 
 function setScaleNote() {
@@ -109,7 +111,7 @@ function convertNodeListToArray(nodeList) {
 }
 
 function highlightKeys(keys) {
-  const scaleIndexs = [];
+  window.scaleIndexs = [];
   if (scaleType == 0) {
     makeScaleArray(majorScalePattern, scaleIndexs, keys);
   } else {
@@ -162,13 +164,65 @@ function clearPreviousHighlights() {
 
   }
 }
-let majorScaleChords = ['major', 'minor', 'minor', 'major', 'major', 'minor', 'diminished'];
-let minorScaleChords = ['minor', 'diminished', 'major', 'minor', 'minor', 'major', 'major'];
+/* let majorScaleChords = ['major', 'minor', 'minor', 'major', 'major', 'minor', 'diminished'];
+let minorScaleChords = ['minor', 'diminished', 'major', 'minor', 'minor', 'major', 'major']; */
 
 let majorChordsPattern = [0, 4, 7];
 let minorChordsPattern = [0, 3, 7];
 let diminishedChordsPattern = [0, 3, 6];
 
+/* let majorScaleChordsPattern = [majorChordsPattern, minorChordsPattern, minorChordsPattern, majorChordsPattern, majorChordsPattern, minorChordsPattern, diminishedChordsPattern];
+console.log(majorScaleChordsPattern);
+let minorScaleChordsPattern = [minorChordsPattern, diminishedChordsPattern, majorChordsPattern, minorChordsPattern, minorChordsPattern, majorChordsPattern, majorChordsPattern];
+ */
 function setChords() {
+  let arrayTestMaster = [];
+  if (scaleType == 0) {
 
+    let ScaleChordsPattern = [majorChordsPattern, minorChordsPattern, minorChordsPattern, majorChordsPattern, majorChordsPattern, minorChordsPattern, diminishedChordsPattern];
+    console.log(ScaleChordsPattern);
+
+    for (let i = 0; i < scaleIndexs.length; i++) {
+      let arrayTest = [];
+      for (let j = 0; j < 3; j++) {
+        if (scaleIndexs[i] + ScaleChordsPattern[i][j] >= 12) {
+          arrayTest.push(scaleIndexs[i] + ScaleChordsPattern[i][j] - 12)
+        } else {
+          arrayTest.push(scaleIndexs[i] + ScaleChordsPattern[i][j])
+        }
+        //console.log(ScaleChordsPattern[i][j]);
+      }
+      arrayTestMaster.push(arrayTest);
+      //console.log(arrayTestMaster);
+    }
+  } else {
+    let ScaleChordsPattern = [minorChordsPattern, diminishedChordsPattern, majorChordsPattern, minorChordsPattern, minorChordsPattern, majorChordsPattern, majorChordsPattern];
+    console.log(ScaleChordsPattern);
+
+    for (let i = 0; i < scaleIndexs.length; i++) {
+      let arrayTest = [];
+      for (let j = 0; j < ScaleChordsPattern[0].length; j++) {
+        if (scaleIndexs[i] + ScaleChordsPattern[i][j] >= 12) {
+          arrayTest.push(scaleIndexs[i] + ScaleChordsPattern[i][j] - 12)
+        } else {
+          arrayTest.push(scaleIndexs[i] + ScaleChordsPattern[i][j])
+        }
+        //console.log(ScaleChordsPattern[i][j]);
+      }
+      arrayTestMaster.push(arrayTest);
+      //console.log(arrayTestMaster);
+    }
+  }
+  console.log(arrayTestMaster);
+
+  const scaleClasses = ['noteC', 'noteCSharp', 'noteD', 'noteDSharp', 'noteE', 'noteF', 'noteFSharp', 'noteG', 'noteGSharp', 'noteA', 'noteASharp', 'noteB'];
+  const finalChords = [];
+  for (let i = 0; i < arrayTestMaster.length; i++) {
+    let arrayl = [];
+    for (let j = 0; j < 3; j++) {
+      arrayl.push(scaleClasses[arrayTestMaster[i][j]]);
+    }
+    finalChords.push(arrayl);
+  }
+  console.log(finalChords)
 }
