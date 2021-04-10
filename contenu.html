@@ -1,43 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="CSS/styles.css">
-    <link rel="stylesheet" href="CSS/littlePianos.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="CSS/styles.css" />
+    <link rel="stylesheet" href="CSS/littlePianos.css" />
     <script src="programmation.js"></script>
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <h1>Music Tools</h1>
+      <h1>Music Tools</h1>
     </header>
     <main>
-        <div id="container_scale">
-            <button id="scaleMixer" onclick="generateScale()">Donne-moi des idées de gamme!</button>
-            <h2>Ta gamme sera en [<span id="scaleNote">.</span><span id="scaleType">.</span>]</h2>
-            <div id="piano"></div>
+      <div id="container_scale">
+        <button id="scaleMixer" onclick="generateScale()">
+          Donne-moi des idées de gamme!
+        </button>
+        <h2>
+          Ta gamme sera en [<span id="scaleNote">.</span
+          ><span id="scaleType">.</span>]
+        </h2>
+        <div id="piano"></div>
+      </div>
+      <div id="container_chordProgressions">
+        <h2>Voici quelques propositions de progression d'accords!</h2>
+        <div id="basicChords">
+          <h3>Voici avec quels accords vous allez pouvoir jouer</h3>
+          <div class="container_smallPiano">
+            <h3>
+              <span class="chordNote"></span><span class="chordType"></span>
+            </h3>
+            <div id="chord0" class="smallPiano"></div>
+          </div>
+          <div class="container_smallPiano">
+            <h3>
+              <span class="chordNote"></span><span class="chordType"></span>
+            </h3>
+            <div id="chord1" class="smallPiano"></div>
+          </div>
+          <div class="container_smallPiano">
+            <h3>
+              <span class="chordNote"></span><span class="chordType"></span>
+            </h3>
+            <div id="chord2" class="smallPiano"></div>
+          </div>
+          <div class="container_smallPiano">
+            <h3>
+              <span class="chordNote"></span><span class="chordType"></span>
+            </h3>
+            <div id="chord3" class="smallPiano"></div>
+          </div>
+          <div class="container_smallPiano">
+            <h3>
+              <span class="chordNote"></span><span class="chordType"></span>
+            </h3>
+            <div id="chord4" class="smallPiano"></div>
+          </div>
+          <div class="container_smallPiano">
+            <h3>
+              <span class="chordNote"></span><span class="chordType"></span>
+            </h3>
+            <div id="chord5" class="smallPiano"></div>
+          </div>
+          <div class="container_smallPiano">
+            <h3>
+              <span class="chordNote"></span><span class="chordType"></span>
+            </h3>
+            <div id="chord6" class="smallPiano"></div>
+          </div>
         </div>
-        <div id="container_chordProgressions">
-            <h2>Voici quelques propositions de progression d'accords!</h2>
-            <div id="basicChords">
-                <h3>Voici avec quels accords vous allez pouvoir jouer</h3>
-                <div id="chord0" class="smallPiano">
-                </div>
-                <div id="chord1" class="smallPiano"></div>
-                <div id="chord2" class="smallPiano"></div>
-                <div id="chord3" class="smallPiano"></div>
-                <div id="chord4" class="smallPiano"></div>
-                <div id="chord5" class="smallPiano"></div>
-                <div id="chord6" class="smallPiano"></div>
-            </div>
-            <div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>  
+        <div>
+          <div></div>
+          <div></div>
+          <div></div>
         </div>
+      </div>
     </main>
-</body>
+  </body>
 </html>

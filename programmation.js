@@ -89,7 +89,7 @@ const harmonicMinorScalePattern = [0, 2, 3, 5, 7, 8, 11];
 const melodicMinorScalePattern = [0, 2, 3, 5, 7, 9, 11];
 
 function highlightScales() {
-  clearPreviousHighlights();
+  clearPreviousHighlights("whiteNote", "blackNote");
   //const keys = getElementsWithNoteClass(notes);
   const keys = getElementsWithNoteClass();
 
@@ -161,7 +161,7 @@ function highlightKeys(keys) {
       highlightedKey[i].style.animation =
         "transitionHighlightedKeys .7s 1 ease-in-out forwards";
       specialNote[i].style.background =
-        "linear-gradient(to bottom, rgb(119, 119, 119) 50%, rgb(0, 199, 139) 50%)";
+        "linear-gradient(to bottom, rgb(29, 29, 29) 50%, rgb(0, 199, 139) 50%)";
       //specialNote[i].style.animation = "transitionColor .7s 1 ease-in-out forwards";
       specialNote[i].style.backgroundSize = "100% 200%";
     }
@@ -207,17 +207,12 @@ function makeScaleArray(necessaryPattern, scale, keys) {
   }
 }
 
-function clearPreviousHighlights(
-  whiteKeysVar,
-  whiteKeysClass,
-  blackKeysVar,
-  blackKeysClass
-) {
-  const whiteKeysReset = document.getElementsByClassName("whiteNote");
-  const blackKeysReset = document.getElementsByClassName("blackNote");
+function clearPreviousHighlights(whiteKeyClass, blackKeyClass) {
+  const whiteKeysReset = document.getElementsByClassName(whiteKeyClass);
+  const blackKeysReset = document.getElementsByClassName(blackKeyClass);
   for (let i = 0; i < whiteKeysReset.length; i++) {
     whiteKeysReset[i].style.background =
-      "linear-gradient(to bottom, rgb(119, 119, 119) 50%, orange 50%)";
+      "linear-gradient(to bottom, rgb(29, 29, 29) 50%, orange 50%)";
     whiteKeysReset[i].style.backgroundSize = "100% 200%";
     whiteKeysReset[i].style.animation =
       "transitionHighlightedKeysReset .7s 1 ease-in-out forwards";
@@ -297,16 +292,24 @@ function setChords() {
   console.log(allChordsKeysStrings);
   const smallPianoEl = document.getElementsByClassName("smallPiano");
   console.log(smallPianoEl);
+  clearPreviousHighlights("smallWhiteNote", "smallBlackNote");
   for (let i = 0; i < allChordsKeysStrings.length; i++) {
     for (let w = 0; w < allChordsKeysStrings[i].length; w++) {
       for (let j = 0; j < 2; j++) {
         let highlightedKeyChord = smallPianoEl[i].getElementsByClassName(
           allChordsKeysStrings[i][w]
         );
+        let keyOfTheChord = smallPianoEl[i].getElementsByClassName(
+          allChordsKeysStrings[i][0]
+        );
         console.log(highlightedKeyChord);
         highlightedKeyChord[j].style.animation =
           "transitionHighlightedKeys .7s 1 ease-in-out forwards";
+        keyOfTheChord[j].style.background =
+          "linear-gradient(to bottom, rgb(29, 29, 29) 50%, rgb(0, 199, 139) 50%)";
+        console.log(keyOfTheChord);
         console.log(highlightedKeyChord[j]);
+        keyOfTheChord[j].style.backgroundSize = "100% 200%";
       }
     }
   }

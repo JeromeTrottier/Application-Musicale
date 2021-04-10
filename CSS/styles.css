@@ -110,30 +110,30 @@ span:last-child {
 
 @keyframes transitionColor {
     0% {
-        background: linear-gradient(to bottom, rgb(119, 119, 119) 50%, orange 50%);
+        background: linear-gradient(to bottom, rgb(29, 29, 29) 50%, orange 50%);
     }
 
     100% {
-        background: linear-gradient(to bottom, rgb(119, 119, 119) 50%, rgb(0, 199, 139) 50%);
+        background: linear-gradient(to bottom, rgb(29, 29, 29) 50%, rgb(0, 199, 139) 50%);
     }
 }
 
 @keyframes transitionColorReset {
     0% {
-        background: linear-gradient(to bottom, rgb(119, 119, 119) 50%, rgb(0, 199, 139) 50%);
+        background: linear-gradient(to bottom, rgb(29, 29, 29) 50%, rgb(0, 199, 139) 50%);
     }
 
     100% {
-        background: linear-gradient(to bottom, rgb(119, 119, 119) 50%, orange 50%);
+        background: linear-gradient(to bottom, rgb(29, 29, 29) 50%, orange 50%);
     }
 }
 
 #piano .oneScale .whiteNote {
     width: 35px;
     height: 96px;
-    border: solid 2px white;
+    border: solid 2px rgb(128, 128, 128);
     /*background-color: rgb(119, 119, 119);*/
-    background: linear-gradient(to bottom, rgb(119, 119, 119) 50%, orange 50%);
+    background: linear-gradient(to bottom, rgb(29, 29, 29) 50%, orange 50%);
     background-size: 100% 200%;
     /*animation: transitionHighlightedKeys .7s 1 ease-in-out forwards;*/
 }
@@ -141,7 +141,7 @@ span:last-child {
 #piano .oneScale .blackNote {
     width: 15px;
     height: 58px;
-    border: solid 2px rgb(29, 29, 29);
+    border: solid 2px rgb(128, 128, 128);
     /*background-color: rgb(29, 29, 29);*/
     background: linear-gradient(to bottom, rgb(29, 29, 29) 50%, orange 50%);
     background-size: 100% 200%;
