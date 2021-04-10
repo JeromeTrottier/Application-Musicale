@@ -266,53 +266,14 @@ function setChords() {
     getAllChordsIndexs(arrayChordsIndexs, ScaleChordsPattern);
   }
   console.log(arrayChordsIndexs);
-
-  const scaleClasses = [
-    "smallNoteC",
-    "smallNoteCSharp",
-    "smallNoteD",
-    "smallNoteDSharp",
-    "smallNoteE",
-    "smallNoteF",
-    "smallNoteFSharp",
-    "smallNoteG",
-    "smallNoteGSharp",
-    "smallNoteA",
-    "smallNoteASharp",
-    "smallNoteB",
-  ];
   const allChordsKeysStrings = [];
-  for (let i = 0; i < arrayChordsIndexs.length; i++) {
-    let arrayChordsString = [];
-    for (let j = 0; j < 3; j++) {
-      arrayChordsString.push(scaleClasses[arrayChordsIndexs[i][j]]);
-    }
-    allChordsKeysStrings.push(arrayChordsString);
-  }
-  console.log(allChordsKeysStrings);
-  const smallPianoEl = document.getElementsByClassName("smallPiano");
-  console.log(smallPianoEl);
-  clearPreviousHighlights("smallWhiteNote", "smallBlackNote");
-  for (let i = 0; i < allChordsKeysStrings.length; i++) {
-    for (let w = 0; w < allChordsKeysStrings[i].length; w++) {
-      for (let j = 0; j < 2; j++) {
-        let highlightedKeyChord = smallPianoEl[i].getElementsByClassName(
-          allChordsKeysStrings[i][w]
-        );
-        let keyOfTheChord = smallPianoEl[i].getElementsByClassName(
-          allChordsKeysStrings[i][0]
-        );
-        console.log(highlightedKeyChord);
-        highlightedKeyChord[j].style.animation =
-          "transitionHighlightedKeys .7s 1 ease-in-out forwards";
-        keyOfTheChord[j].style.background =
-          "linear-gradient(to bottom, rgb(29, 29, 29) 50%, rgb(0, 199, 139) 50%)";
-        console.log(keyOfTheChord);
-        console.log(highlightedKeyChord[j]);
-        keyOfTheChord[j].style.backgroundSize = "100% 200%";
-      }
-    }
-  }
+  getAllChordsClasses(arrayChordsIndexs, allChordsKeysStrings);
+
+  drawChords(allChordsKeysStrings);
+
+  const chordsKeys = getFirstIndexOfEachChord(arrayChordsIndexs);
+  //console.log(chordsKeys);
+  setKeyOfEachChord(chordsKeys);
 }
 function getAllChordsIndexs(arrayChordsIndexs, ScaleChordsPattern) {
   for (let i = 0; i < scaleIndexs.length; i++) {
@@ -328,4 +289,95 @@ function getAllChordsIndexs(arrayChordsIndexs, ScaleChordsPattern) {
     arrayChordsIndexs.push(scaleKeysIndexes);
     //console.log(arrayChordsIndexs);
   }
+}
+
+function getAllChordsClasses(arrayChordsIndexs, allChordsKeysStrings) {
+  const scaleClasses = [
+    "smallNoteC",
+    "smallNoteCSharp",
+    "smallNoteD",
+    "smallNoteDSharp",
+    "smallNoteE",
+    "smallNoteF",
+    "smallNoteFSharp",
+    "smallNoteG",
+    "smallNoteGSharp",
+    "smallNoteA",
+    "smallNoteASharp",
+    "smallNoteB",
+  ];
+  //const allChordsKeysStrings = [];
+  for (let i = 0; i < arrayChordsIndexs.length; i++) {
+    let arrayChordsString = [];
+    for (let j = 0; j < 3; j++) {
+      arrayChordsString.push(scaleClasses[arrayChordsIndexs[i][j]]);
+    }
+    allChordsKeysStrings.push(arrayChordsString);
+  }
+}
+
+function drawChords(allChordsKeysStrings) {
+  const smallPianoEl = document.getElementsByClassName("smallPiano");
+  clearPreviousHighlights("smallWhiteNote", "smallBlackNote");
+  for (let i = 0; i < allChordsKeysStrings.length; i++) {
+    for (let w = 0; w < allChordsKeysStrings[i].length; w++) {
+      for (let j = 0; j < 2; j++) {
+        let highlightedKeyChord = smallPianoEl[i].getElementsByClassName(
+          allChordsKeysStrings[i][w]
+        );
+        let keyOfTheChord = smallPianoEl[i].getElementsByClassName(
+          allChordsKeysStrings[i][0]
+        );
+        //console.log(highlightedKeyChord);
+        highlightedKeyChord[j].style.animation =
+          "transitionHighlightedKeys .7s 1 ease-in-out forwards";
+        keyOfTheChord[j].style.background =
+          "linear-gradient(to bottom, rgb(29, 29, 29) 50%, rgb(0, 199, 139) 50%)";
+        //console.log(keyOfTheChord);
+        //console.log(highlightedKeyChord[j]);
+        keyOfTheChord[j].style.backgroundSize = "100% 200%";
+      }
+    }
+  }
+}
+
+function getFirstIndexOfEachChord(arrayChordsIndexs) {
+  const firstIndexs = [];
+  console.log(arrayChordsIndexs);
+
+  for (let i = 0; i < arrayChordsIndexs.length; i++) {
+    firstIndexs.push(arrayChordsIndexs[i][0]);
+  }
+  return firstIndexs;
+}
+
+function setKeyOfEachChord(chordsKeys) {
+  const keysInScaleSharp = [
+    "C",
+    "C#",
+    "D",
+    "D#",
+    "E",
+    "F",
+    "F#",
+    "G",
+    "G#",
+    "A",
+    "A#",
+    "B",
+  ];
+  const keysInScaleFlat = [
+    "C",
+    "Db",
+    "D",
+    "Eb",
+    "E",
+    "F",
+    "Gb",
+    "G",
+    "Ab",
+    "A",
+    "Bb",
+    "B",
+  ];
 }
