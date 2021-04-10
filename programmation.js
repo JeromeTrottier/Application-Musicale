@@ -132,7 +132,7 @@ function getFirstElementIdxInScale(keys) {
 function getElementsWithNoteClass() {
   const keys = document.getElementsByClassName("note");
   const keysArray = convertNodeListToArray(keys);
-  console.log(keysArray);
+  //console.log(keysArray);
   return keysArray;
 }
 
@@ -145,13 +145,38 @@ function convertNodeListToArray(nodeList) {
 }
 
 function highlightKeys(keys) {
+  getScaleKeysIndexs(keys);
+  //console.log(scaleIndexs);
+
+  const finalScale = [];
+  getScaleKeysClasses(finalScale);
+  //console.log(finalScale);
+
+  const specialNote = document.getElementsByClassName(finalScale[0]);
+  //console.log(specialNote);
+  for (let i = 0; i < 2; i++)
+    for (let j = 0; j < finalScale.length; j++) {
+      const highlightedKey = document.getElementsByClassName(finalScale[j]);
+      //console.log(highlightedKey);
+      highlightedKey[i].style.animation =
+        "transitionHighlightedKeys .7s 1 ease-in-out forwards";
+      specialNote[i].style.background =
+        "linear-gradient(to bottom, rgb(119, 119, 119) 50%, rgb(0, 199, 139) 50%)";
+      //specialNote[i].style.animation = "transitionColor .7s 1 ease-in-out forwards";
+      specialNote[i].style.backgroundSize = "100% 200%";
+    }
+}
+
+function getScaleKeysIndexs(keys) {
   window.scaleIndexs = [];
   if (scaleType == 0) {
     makeScaleArray(majorScalePattern, scaleIndexs, keys);
   } else {
     makeScaleArray(minorScalePattern, scaleIndexs, keys);
   }
-  console.log(scaleIndexs);
+}
+
+function getScaleKeysClasses(finalScale) {
   const scaleClasses = [
     "noteC",
     "noteCSharp",
@@ -166,24 +191,9 @@ function highlightKeys(keys) {
     "noteASharp",
     "noteB",
   ];
-  const finalScale = [];
   for (let i = 0; i < scaleIndexs.length; i++) {
     finalScale.push(scaleClasses[scaleIndexs[i]]);
   }
-  console.log(finalScale);
-  const specialNote = document.getElementsByClassName(finalScale[0]);
-  console.log(specialNote);
-  for (let i = 0; i < 2; i++)
-    for (let j = 0; j < finalScale.length; j++) {
-      const highlightedKey = document.getElementsByClassName(finalScale[j]);
-      //console.log(highlightedKey);
-      highlightedKey[i].style.animation =
-        "transitionHighlightedKeys .7s 1 ease-in-out forwards";
-      specialNote[i].style.background =
-        "linear-gradient(to bottom, rgb(119, 119, 119) 50%, rgb(0, 199, 139) 50%)";
-      //specialNote[i].style.animation = "transitionColor .7s 1 ease-in-out forwards";
-      specialNote[i].style.backgroundSize = "100% 200%";
-    }
 }
 
 function makeScaleArray(necessaryPattern, scale, keys) {
@@ -197,7 +207,12 @@ function makeScaleArray(necessaryPattern, scale, keys) {
   }
 }
 
-function clearPreviousHighlights() {
+function clearPreviousHighlights(
+  whiteKeysVar,
+  whiteKeysClass,
+  blackKeysVar,
+  blackKeysClass
+) {
   const whiteKeysReset = document.getElementsByClassName("whiteNote");
   const blackKeysReset = document.getElementsByClassName("blackNote");
   for (let i = 0; i < whiteKeysReset.length; i++) {
@@ -222,10 +237,7 @@ const majorChordsPattern = [0, 4, 7];
 const minorChordsPattern = [0, 3, 7];
 const diminishedChordsPattern = [0, 3, 6];
 const NUMBER_OF_KEYS_IN_PATTERN = 3;
-/* let majorScaleChordsPattern = [majorChordsPattern, minorChordsPattern, minorChordsPattern, majorChordsPattern, majorChordsPattern, minorChordsPattern, diminishedChordsPattern];
-console.log(majorScaleChordsPattern);
-let minorScaleChordsPattern = [minorChordsPattern, diminishedChordsPattern, majorChordsPattern, minorChordsPattern, minorChordsPattern, majorChordsPattern, majorChordsPattern];
- */
+
 const scaleTypes = {
   major: 0,
   minor: 1,
@@ -243,21 +255,8 @@ function setChords() {
       minorChordsPattern,
       diminishedChordsPattern,
     ];
-    console.log(ScaleChordsPattern);
-
-    for (let i = 0; i < scaleIndexs.length; i++) {
-      let scaleKeysIndexes = [];
-      for (let j = 0; j < NUMBER_OF_KEYS_IN_PATTERN; j++) {
-        if (scaleIndexs[i] + ScaleChordsPattern[i][j] >= 12) {
-          scaleKeysIndexes.push(scaleIndexs[i] + ScaleChordsPattern[i][j] - 12);
-        } else {
-          scaleKeysIndexes.push(scaleIndexs[i] + ScaleChordsPattern[i][j]);
-        }
-        //console.log(ScaleChordsPattern[i][j]);
-      }
-      arrayChordsIndexs.push(scaleKeysIndexes);
-      console.log(arrayChordsIndexs);
-    }
+    //console.log(ScaleChordsPattern);
+    getAllChordsIndexs(arrayChordsIndexs, ScaleChordsPattern);
   } else {
     let ScaleChordsPattern = [
       minorChordsPattern,
@@ -268,21 +267,8 @@ function setChords() {
       majorChordsPattern,
       majorChordsPattern,
     ];
-    console.log(ScaleChordsPattern);
-
-    for (let i = 0; i < scaleIndexs.length; i++) {
-      let scaleKeysIndexes = [];
-      for (let j = 0; j < ScaleChordsPattern[0].length; j++) {
-        if (scaleIndexs[i] + ScaleChordsPattern[i][j] >= 12) {
-          scaleKeysIndexes.push(scaleIndexs[i] + ScaleChordsPattern[i][j] - 12);
-        } else {
-          scaleKeysIndexes.push(scaleIndexs[i] + ScaleChordsPattern[i][j]);
-        }
-        //console.log(ScaleChordsPattern[i][j]);
-      }
-      arrayChordsIndexs.push(scaleKeysIndexes);
-      //console.log(arrayChordsIndexs);
-    }
+    //console.log(ScaleChordsPattern);
+    getAllChordsIndexs(arrayChordsIndexs, ScaleChordsPattern);
   }
   console.log(arrayChordsIndexs);
 
@@ -300,41 +286,43 @@ function setChords() {
     "smallNoteASharp",
     "smallNoteB",
   ];
-  const finalChords = [];
+  const allChordsKeysStrings = [];
   for (let i = 0; i < arrayChordsIndexs.length; i++) {
     let arrayChordsString = [];
     for (let j = 0; j < 3; j++) {
       arrayChordsString.push(scaleClasses[arrayChordsIndexs[i][j]]);
     }
-    finalChords.push(arrayChordsString);
+    allChordsKeysStrings.push(arrayChordsString);
   }
-  console.log(finalChords);
+  console.log(allChordsKeysStrings);
   const smallPianoEl = document.getElementsByClassName("smallPiano");
   console.log(smallPianoEl);
-  for (let i = 0; i < smallPianoEl.length; i++) {
-    for (let j = 0; j < 3; j++) {
-      let highlightedKeysChords = smallPianoEl[i].getElementsByClassName(
-        finalChords[i][j]
-      );
-      for (let w = 0; w < 2; w++) {
-        highlightedKeysChords[w].classList.add = "test";
-        console.log(highlightedKeysChords[w]);
+  for (let i = 0; i < allChordsKeysStrings.length; i++) {
+    for (let w = 0; w < allChordsKeysStrings[i].length; w++) {
+      for (let j = 0; j < 2; j++) {
+        let highlightedKeyChord = smallPianoEl[i].getElementsByClassName(
+          allChordsKeysStrings[i][w]
+        );
+        console.log(highlightedKeyChord);
+        highlightedKeyChord[j].style.animation =
+          "transitionHighlightedKeys .7s 1 ease-in-out forwards";
+        console.log(highlightedKeyChord[j]);
       }
-      //highlightedKeysChords.style.backgroundColor = "orange";
-      //console.log(highlightedKeysChords);
     }
   }
-
-  /* for (let j = 0; j < 2; j++) {
-    for (let i = 0; i < 7; i++) {
-      console.log(smallPianoEl[i]);
-      for (let w = 0; w < 3; w++) {
-        let highlightedKeysChords = document.getElementsByClassName(
-          finalChords[i][w]
-        );
-        console.log(highlightedKeysChords[j]);
-        //smallPianoEl[i]
+}
+function getAllChordsIndexs(arrayChordsIndexs, ScaleChordsPattern) {
+  for (let i = 0; i < scaleIndexs.length; i++) {
+    let scaleKeysIndexes = [];
+    for (let j = 0; j < NUMBER_OF_KEYS_IN_PATTERN; j++) {
+      if (scaleIndexs[i] + ScaleChordsPattern[i][j] >= 12) {
+        scaleKeysIndexes.push(scaleIndexs[i] + ScaleChordsPattern[i][j] - 12);
+      } else {
+        scaleKeysIndexes.push(scaleIndexs[i] + ScaleChordsPattern[i][j]);
       }
+      //console.log(ScaleChordsPattern[i][j]);
     }
-  } */
+    arrayChordsIndexs.push(scaleKeysIndexes);
+    //console.log(arrayChordsIndexs);
+  }
 }
