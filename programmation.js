@@ -225,8 +225,6 @@ function clearPreviousHighlights(whiteKeyClass, blackKeyClass) {
       "transitionHighlightedKeysReset .7s 1 ease-in-out forwards";
   }
 }
-/* let majorScaleChords = ['major', 'minor', 'minor', 'major', 'major', 'minor', 'diminished'];
-let minorScaleChords = ['minor', 'diminished', 'major', 'minor', 'minor', 'major', 'major']; */
 
 const majorChordsPattern = [0, 4, 7];
 const minorChordsPattern = [0, 3, 7];
@@ -271,9 +269,13 @@ function setChords() {
 
   drawChords(allChordsKeysStrings);
 
-  const chordsKeys = getFirstIndexOfEachChord(arrayChordsIndexs);
-  //console.log(chordsKeys);
-  setKeyOfEachChord(chordsKeys);
+  const chordsKeysIndexs = getFirstIndexOfEachChord(arrayChordsIndexs);
+  console.log(chordsKeysIndexs);
+  const chordKeys = setKeyOfEachChord(chordsKeysIndexs);
+  console.log(chordKeys);
+  displayKeyOfEachChord(chordKeys);
+  const typeOfChords = getTypeOfEachChord();
+  displayTypeOfEachChord(typeOfChords);
 }
 function getAllChordsIndexs(arrayChordsIndexs, ScaleChordsPattern) {
   for (let i = 0; i < scaleIndexs.length; i++) {
@@ -351,7 +353,8 @@ function getFirstIndexOfEachChord(arrayChordsIndexs) {
   return firstIndexs;
 }
 
-function setKeyOfEachChord(chordsKeys) {
+function setKeyOfEachChord(chordsKeysIndexs) {
+  const chordKeys = [];
   const keysInScaleSharp = [
     "C",
     "C#",
@@ -380,4 +383,47 @@ function setKeyOfEachChord(chordsKeys) {
     "Bb",
     "B",
   ];
+  for (let i = 0; i < chordsKeysIndexs.length; i++) {
+    chordKeys.push(keysInScaleSharp[chordsKeysIndexs[i]]);
+  }
+  return chordKeys;
+}
+function displayKeyOfEachChord(chordKeys) {
+  const spanForKeyChordEl = document.getElementsByClassName("chordNote");
+  for (let i = 0; i < chordKeys.length; i++) {
+    spanForKeyChordEl[i].innerHTML = chordKeys[i];
+  }
+}
+function getTypeOfEachChord() {
+  const majorScaleChords = [
+    " Major",
+    " Minor",
+    " Minor",
+    " Major",
+    " Major",
+    " Minor",
+    " Diminished",
+  ];
+  const minorScaleChords = [
+    " Minor",
+    " Diminished",
+    " Major",
+    " Minor",
+    " Minor",
+    " Major",
+    " Major",
+  ];
+  let typeOfChords;
+  if (scaleType === scaleTypes.major) {
+    typeOfChords = majorScaleChords;
+  } else {
+    typeOfChords = minorScaleChords;
+  }
+  return typeOfChords;
+}
+function displayTypeOfEachChord(typeOfChords) {
+  const spanForChordTypeEl = document.getElementsByClassName("chordType");
+  for (let i = 0; i < typeOfChords.length; i++) {
+    spanForChordTypeEl[i].innerHTML = typeOfChords[i];
+  }
 }
