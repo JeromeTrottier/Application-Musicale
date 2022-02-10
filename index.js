@@ -26,15 +26,15 @@ function setScaleNote() {
     "Bb",
     "B",
   ];
-  console.log(scaleNotes);
-  window.scaleNote = Math.ceil(Math.random() * 17) - 1;
+  //console.log(scaleNotes);
+  window.scaleNote = Math.ceil(Math.random() * scaleNotes.length) - 1;
   document.getElementById("scaleNote").innerHTML = scaleNotes[scaleNote];
   console.log(scaleNote);
 }
 
 function setScaleType() {
   const scaleTypes = [" Major", " Minor"];
-  window.scaleType = Math.ceil(Math.random() * 2) - 1;
+  window.scaleType = Math.ceil(Math.random() * scaleTypes.length) - 1;
   document.getElementById("scaleType").innerHTML = scaleTypes[scaleType];
 }
 
