@@ -1,80 +1,121 @@
 #basicChords {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-    justify-content: center;
-    align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+}
+@media screen and (max-width: 768px) {
+  #basicChords {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(8, 1fr);
+  }
+  #basicChords h3 {
+    grid-column: 1/2;
+  }
+  .container_smallPiano:nth-child(8) {
+    grid-column: 1/2;
+    grid-template-rows: 8/9;
+  }
+  .container_smallPiano:nth-child(1) {
+    grid-column: 1/2;
+    grid-template-rows: 1/2;
+  }
+  .container_smallPiano:nth-child(2) {
+    grid-column: 1/2;
+    grid-template-rows: 2/3;
+  }
+  .container_smallPiano:nth-child(3) {
+    grid-column: 1/2;
+    grid-template-rows: 3/4;
+  }
+  .container_smallPiano:nth-child(4) {
+    grid-column: 1/2;
+    grid-template-rows: 4/5;
+  }
+  .container_smallPiano:nth-child(5) {
+    grid-column: 1/2;
+    grid-template-rows: 5/6;
+  }
+  .container_smallPiano:nth-child(6) {
+    grid-column: 1/2;
+    grid-template-rows: 6/7;
+  }
+  .container_smallPiano:nth-child(7) {
+    grid-column: 1/2;
+    grid-template-rows: 6/7;
+  }
 }
 .container_smallPiano {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 #basicChords h3 {
-    grid-column: 1/3;
-    text-align: center;
+  grid-column: 1/3;
+  text-align: center;
 }
 
 .container_smallPiano:last-child {
-    grid-column: 1/3;
+  grid-column: 1/3;
 }
 
 .smallPiano {
-    justify-self: center;
-    margin: 20px;
-    height: 50px;
-    width: 242px;
-    border: solid 2px rgb(51, 51, 51);
-    display: flex;
-    box-shadow: 0px 5px 20px black;
+  justify-self: center;
+  margin: 20px;
+  height: 50px;
+  width: 242px;
+  border: solid 2px rgb(51, 51, 51);
+  display: flex;
+  box-shadow: 0px 5px 20px black;
 }
 
 .oneSmallScale {
-    display: flex;
-    position: relative;
+  display: flex;
+  position: relative;
 }
 
 .smallPiano .oneSmallScale .smallWhiteNote {
-    width: 17px;
-    height: 46px;
-    border: solid 1px rgb(128, 128, 128);
-    /*background-color: rgb(119, 119, 119);*/
-    background: linear-gradient(to bottom, rgb(29, 29, 29) 50%, orange 50%);
-    background-size: 100% 200%;
-    /*animation: transitionHighlightedKeys .7s 1 ease-in-out forwards;*/
+  width: 17px;
+  height: 46px;
+  border: solid 1px rgb(128, 128, 128);
+  /*background-color: rgb(119, 119, 119);*/
+  background: linear-gradient(to bottom, rgb(29, 29, 29) 50%, orange 50%);
+  background-size: 100% 200%;
+  /*animation: transitionHighlightedKeys .7s 1 ease-in-out forwards;*/
 }
 
 .smallPiano .oneSmallScale .smallBlackNote {
-    width: 8px;
-    height: 29px;
-    border: solid 2px rgb(128, 128, 128);
-    /*background-color: rgb(29, 29, 29);*/
-    background: linear-gradient(to bottom, rgb(29, 29, 29) 50%, orange 50%);
-    background-size: 100% 200%;
+  width: 8px;
+  height: 29px;
+  border: solid 2px rgb(128, 128, 128);
+  /*background-color: rgb(29, 29, 29);*/
+  background: linear-gradient(to bottom, rgb(29, 29, 29) 50%, orange 50%);
+  background-size: 100% 200%;
 }
 
 .smallNoteCSharp {
-    position: absolute;
-    left: 13px;
+  position: absolute;
+  left: 13px;
 }
 
 .smallNoteDSharp {
-    position: absolute;
-    left: 30px;
+  position: absolute;
+  left: 30px;
 }
 
 .smallNoteFSharp {
-    position: absolute;
-    left: 64px;
+  position: absolute;
+  left: 64px;
 }
 
 .smallNoteGSharp {
-    position: absolute;
-    left: 81px;
+  position: absolute;
+  left: 81px;
 }
 
 .smallNoteASharp {
-    position: absolute;
-    left: 98px;
+  position: absolute;
+  left: 98px;
 }
