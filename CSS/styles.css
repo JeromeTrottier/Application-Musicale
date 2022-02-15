@@ -37,6 +37,9 @@ main {
 #container_scale .inputs select {
   color: black;
 }
+#container_scale .inputs select option {
+  color: black;
+}
 button {
   cursor: pointer;
   background: linear-gradient(
