@@ -34,7 +34,9 @@ main {
   justify-content: center;
   align-items: center;
 }
-
+#container_scale .inputs select {
+  color: black;
+}
 button {
   cursor: pointer;
   background: linear-gradient(

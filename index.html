@@ -15,7 +15,35 @@
     </header>
     <main>
       <div id="container_scale">
-        <button id="scaleMixer" onclick="generateScale()">
+        <div class="inputs">
+          <label for="scaleTypeOptions">Choose a scale type: </label>
+          <select name="scaleTypeOptions" id="scaleTypeOptions">
+            <option value=" Major">Major</option>
+            <option value=" Minor">Minor</option>
+            <option value=" Harmonic Minor">Harmonic Minor</option>
+            <option value=" Melodic Minor">Melodic Minor</option>
+          </select>
+          <label for="noteOption">Choose a note: </label>
+          <select name="noteOption" id="noteOption">
+            <option value="C">C</option>
+            <option value="D">D</option>
+            <option value="E">E</option>
+            <option value="F">F</option>
+            <option value="G">G</option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+          </select>
+          <label for="noteTypeOption">Choose a note type: </label>
+          <select name="noteTypeOption" id="noteTypeOption">
+            <option value="">Natural</option>
+            <option value="#">Sharp (#)</option>
+            <option value="b">Flat (&#9837;)</option>
+          </select>
+          <button id="scaleChooser" onclick="generateChosenScale()">
+            Générer
+          </button>
+        </div>
+        <button id="scaleMixer" onclick="generateRandomScale()">
           Générer aléatoirement
         </button>
         <h2>

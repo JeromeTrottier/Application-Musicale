@@ -1,3 +1,24 @@
+const scaleNotes = [
+  "C",
+  "C#",
+  "Db",
+  "D",
+  "D#",
+  "Eb",
+  "E",
+  "F",
+  "F#",
+  "Gb",
+  "G",
+  "G#",
+  "Ab",
+  "A",
+  "A#",
+  "Bb",
+  "B",
+];
+const scaleTypes = [" Major", " Minor", " Harmonic Minor", " Melodic Minor"];
+
 const NUMBER_OF_SCALES_IN_PIANO = 2;
 const NUMBER_OF_KEYS_IN_CHROMATIC_SCALE = 12;
 const NUMBER_OF_KEYS_IN_CHORD_PATTERN = 3;
@@ -5,8 +26,8 @@ const NUMBER_OF_KEYS_IN_CHORD_PATTERN = 3;
 //SCALE PATTERNS
 const majorScalePattern = [0, 2, 4, 5, 7, 9, 11];
 const minorScalePattern = [0, 2, 3, 5, 7, 8, 10];
-const harmonicMinorScalePattern = [0, 2, 3, 5, 7, 8, 11];
 const melodicMinorScalePattern = [0, 2, 3, 5, 7, 9, 11];
+const harmonicMinorScalePattern = [0, 2, 3, 5, 7, 8, 11];
 
 //CHORD PATTERNS
 const majorChordsPattern = [0, 4, 7];
@@ -35,26 +56,28 @@ const MinorScaleChordsPattern = [
   majorChordsPattern,
 ];
 
-const MelodicMinorScaleChordsPattern = [
-  minorChordsPattern,
-  diminishedChordsPattern,
-  majorChordsPattern,
-  minorChordsPattern,
-  minorChordsPattern,
-  majorChordsPattern,
-  majorChordsPattern,
-];
-
 const HarmonicMinorScaleChordsPattern = [
   minorChordsPattern,
   diminishedChordsPattern,
-  majorChordsPattern,
+  augmentedChordsPattern,
   minorChordsPattern,
-  minorChordsPattern,
   majorChordsPattern,
   majorChordsPattern,
+  diminishedChordsPattern,
 ];
-const scaleTypes = {
+
+const MelodicMinorScaleChordsPattern = [
+  minorChordsPattern,
+  minorChordsPattern,
+  augmentedChordsPattern,
+  majorChordsPattern,
+  majorChordsPattern,
+  diminishedChordsPattern,
+  diminishedChordsPattern,
+];
+
+
+const scaleTypesIndex = {
   major: 0,
   minor: 1,
   harmonicMinor: 2,
@@ -121,16 +144,70 @@ function drawChordPianos() {
   }
 }
 
+
+
+
+
+
+
+/*------------------------------------------------------------------*/
+/*----------------------GENERATE CHOSEN SCALE-----------------------*/
+/*------------------------------------------------------------------*/
+
+
+function generateChosenScale() {
+
+  getScaleInformation();
+
+  highlightScales();
+
+  setChords();
+}
+
+
+function getScaleInformation() {
+
+  const chosenScaleType = getChosenScaleType();
+  setScaleType(chosenScaleType);
+
+  const chosenNote = getChosenNote();
+  const chosenNoteType = getChosenNoteType();
+  setNote(chosenNote, chosenNoteType);
+}
+
+function getChosenScaleType() {
+  return document.querySelector("#scaleTypeOptions").value;
+}
+
+function setScaleType(scaleTypeString) {
+
+  window.scaleType = scaleTypes.indexOf(scaleTypeString);
+  document.querySelector("#scaleType").innerHTML = scaleTypeString;
+}
+
+function getChosenNote() {
+  return document.querySelector("#noteOption").value;
+}
+function getChosenNoteType() {
+  return document.querySelector("#noteTypeOption").value;
+}
+
+function setNote(noteString, noteTypeString) {
+  const sourceNote = noteString + noteTypeString
+  window.scaleNote = scaleNotes.indexOf(sourceNote);
+  document.querySelector("#scaleNote").innerHTML = sourceNote;
+}
+
 /*------------------------------------------------------------------*/
 /*----------------------GENERATE RANDOM SCALE-----------------------*/
 /*------------------------------------------------------------------*/
 
-function generateScale() {
+function generateRandomScale() {
   // Aller chercher la note source de la gamme
-  setScaleNote();
+  generateScaleNote();
 
   // Aller chercher le type de la gamme (mineur ou majeur)
-  setScaleType();
+  generateScaleType();
 
   // Highlight la gamme choisie
   highlightScales();
@@ -139,34 +216,12 @@ function generateScale() {
   setChords();
 }
 
-function setScaleNote() {
-  // Notes possibles
-  const scaleNotes = [
-    "C",
-    "C#",
-    "Db",
-    "D",
-    "D#",
-    "Eb",
-    "E",
-    "F",
-    "F#",
-    "Gb",
-    "G",
-    "G#",
-    "Ab",
-    "A",
-    "A#",
-    "Bb",
-    "B",
-  ];
+function generateScaleNote() {
   window.scaleNote = Math.ceil(Math.random() * scaleNotes.length) - 1;
   document.querySelector("#scaleNote").innerHTML = scaleNotes[scaleNote];
 }
 
-function setScaleType() {
-  // Scales Possible
-  const scaleTypes = [" Major", " Minor"];
+function generateScaleType() {
   window.scaleType = Math.ceil(Math.random() * scaleTypes.length) - 1;
   document.querySelector("#scaleType").innerHTML = scaleTypes[scaleType];
 }
@@ -241,8 +296,12 @@ function getScaleKeysIndexs(keys) {
   const scaleIndexs = [];
   if (scaleType == 0) {
     makeScaleArray(majorScalePattern, scaleIndexs, keys);
-  } else {
+  } else if (scaleType == 1) {
     makeScaleArray(minorScalePattern, scaleIndexs, keys);
+  } else if (scaleType == 2) {
+    makeScaleArray(harmonicMinorScalePattern, scaleIndexs, keys);
+  } else {
+    makeScaleArray(melodicMinorScalePattern, scaleIndexs, keys);
   }
   return scaleIndexs;
 }
@@ -332,7 +391,7 @@ function setChords() {
 
 function getScaleChordsPattern() {
   let ScaleChordsPattern;
-  if (scaleType === scaleTypes.major) {
+  if (scaleType === scaleTypesIndex.major) {
     ScaleChordsPattern = MajorScaleChordsPattern;
   } else {
     ScaleChordsPattern = MinorScaleChordsPattern;
@@ -476,7 +535,7 @@ function getTypeOfEachChord() {
     " Major",
   ];
   let typeOfChords;
-  if (scaleType === scaleTypes.major) {
+  if (scaleType === scaleTypesIndex.major) {
     typeOfChords = majorScaleChords;
   } else {
     typeOfChords = minorScaleChords;
