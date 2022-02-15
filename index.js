@@ -144,16 +144,11 @@ function drawChordPianos() {
   }
 }
 
-
-
-
-
-
-
 /*------------------------------------------------------------------*/
 /*----------------------GENERATE CHOSEN SCALE-----------------------*/
 /*------------------------------------------------------------------*/
 
+document.querySelector('#scaleChooser').addEventListener("click", generateChosenScale);
 
 function generateChosenScale() {
 
@@ -201,6 +196,8 @@ function setNote(noteString, noteTypeString) {
 /*------------------------------------------------------------------*/
 /*----------------------GENERATE RANDOM SCALE-----------------------*/
 /*------------------------------------------------------------------*/
+
+document.querySelector("#scaleMixer").addEventListener("click", generateRandomScale);
 
 function generateRandomScale() {
   // Aller chercher la note source de la gamme
@@ -294,15 +291,22 @@ function highlightKeys(keys) {
 
 function getScaleKeysIndexs(keys) {
   const scaleIndexs = [];
-  if (scaleType == 0) {
-    makeScaleArray(majorScalePattern, scaleIndexs, keys);
-  } else if (scaleType == 1) {
-    makeScaleArray(minorScalePattern, scaleIndexs, keys);
-  } else if (scaleType == 2) {
-    makeScaleArray(harmonicMinorScalePattern, scaleIndexs, keys);
-  } else {
-    makeScaleArray(melodicMinorScalePattern, scaleIndexs, keys);
+
+  switch (scaleType) {
+    case 0:
+      makeScaleArray(majorScalePattern, scaleIndexs, keys);
+      break;
+    case 1:
+      makeScaleArray(minorScalePattern, scaleIndexs, keys);
+      break;
+    case 2:
+      makeScaleArray(harmonicMinorScalePattern, scaleIndexs, keys);
+      break;
+    case 3:
+      makeScaleArray(melodicMinorScalePattern, scaleIndexs, keys);
+      break;
   }
+
   return scaleIndexs;
 }
 
@@ -534,11 +538,38 @@ function getTypeOfEachChord() {
     " Major",
     " Major",
   ];
+  const harmonicMinorScaleChords = [
+    " Minor",
+    " Diminished",
+    " Augmented",
+    " Minor",
+    " Major",
+    " Major",
+    " Diminished",
+  ];
+  const melodicMinorScaleChords = [
+    " Minor",
+    " Minor",
+    " Augmented",
+    " Major",
+    " Major",
+    " Diminished",
+    " Diminished",
+  ];
   let typeOfChords;
-  if (scaleType === scaleTypesIndex.major) {
-    typeOfChords = majorScaleChords;
-  } else {
-    typeOfChords = minorScaleChords;
+  switch (scaleType) {
+    case 0:
+      typeOfChords = majorScaleChords;
+      break;
+    case 1:
+      typeOfChords = minorScaleChords;
+      break;
+    case 2:
+      typeOfChords = harmonicMinorScaleChords;
+      break;
+    case 3:
+      typeOfChords = melodicMinorScaleChords;
+      break;
   }
   return typeOfChords;
 }

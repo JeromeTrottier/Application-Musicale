@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="CSS/styles.css" />
     <link rel="stylesheet" href="CSS/littlePianos.css" />
-    <script src="index.js"></script>
-    <title>Document</title>
+    <title>Music Tools | By Jérôme Trottier</title>
   </head>
   <body>
     <header>
@@ -39,13 +38,9 @@
             <option value="#">Sharp (#)</option>
             <option value="b">Flat (&#9837;)</option>
           </select>
-          <button id="scaleChooser" onclick="generateChosenScale()">
-            Générer
-          </button>
+          <button id="scaleChooser">Générer</button>
         </div>
-        <button id="scaleMixer" onclick="generateRandomScale()">
-          Générer aléatoirement
-        </button>
+        <button id="scaleMixer">Générer aléatoirement</button>
         <h2>
           Ta gamme sera en [<span id="scaleNote">.</span
           ><span id="scaleType">.</span>]
@@ -106,5 +101,6 @@
         </div>
       </div>
     </main>
+    <script src="index.js"></script>
   </body>
 </html>
