@@ -1,9 +1,13 @@
-# Générateur de gammes et accords aléatoires
+# Générateur de gammes et accords
 
 Créé en JavaScript, CSS et HTML
 
 ## Comment utiliser l'outil
 
+### Générer une gamme choisie
+Choisissez le type de gamme, la note source ainsi que le type de note et cliquez sur le bouton Générer pour afficher la gamme de votre choix.
+
+### Générer une gamme aléatoire
 Il suffit de cliquer sur le bouton dans le haut de la page, et le reste se fait par programmation! Vous aller maintenant avoir une gamme générer aléatoirement accompanger par ses accords correspondants!
 
 ## Comment ça fonctionne
