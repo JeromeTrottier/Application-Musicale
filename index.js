@@ -18,7 +18,7 @@ const scaleNotes = [
   "A",
   "A#",
   "Bb",
-  "B",
+  "B"
 ];
 const scaleTypes = [" Major", " Minor", " Harmonic Minor", " Melodic Minor"];
 
@@ -310,7 +310,6 @@ function getScaleKeysIndexs(keys) {
       makeScaleArray(melodicMinorScalePattern, scaleIndexs, keys);
       break;
   }
-
   return scaleIndexs;
 }
 
@@ -322,7 +321,6 @@ function getFinalScaleKeysClasses(pianoScaleKeyIndexs) {
     ".noteD",
     ".noteDSharp",
     ".noteE",
-    ".noteESharp",
     ".noteF",
     ".noteFSharp",
     ".noteG",
@@ -334,6 +332,7 @@ function getFinalScaleKeysClasses(pianoScaleKeyIndexs) {
   for (let i = 0; i < pianoScaleKeyIndexs.length; i++) {
     finalScaleClasses.push(scaleClasses[pianoScaleKeyIndexs[i]]);
   }
+  console.log(finalScaleClasses);
   return finalScaleClasses;
 }
 
@@ -434,7 +433,6 @@ function getAllChordsClasses(arrayChordsIndexs, allChordsKeysStrings) {
     "smallNoteD",
     "smallNoteDSharp",
     "smallNoteE",
-    "smallNoteESharp",
     "smallNoteF",
     "smallNoteFSharp",
     "smallNoteG",
