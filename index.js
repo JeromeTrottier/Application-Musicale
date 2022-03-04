@@ -1,4 +1,5 @@
 const scaleNotes = [
+  "Cb",
   "C",
   "C#",
   "Db",
@@ -6,6 +7,8 @@ const scaleNotes = [
   "D#",
   "Eb",
   "E",
+  "E#",
+  "Fb",
   "F",
   "F#",
   "Gb",
@@ -28,6 +31,7 @@ const majorScalePattern = [0, 2, 4, 5, 7, 9, 11];
 const minorScalePattern = [0, 2, 3, 5, 7, 8, 10];
 const melodicMinorScalePattern = [0, 2, 3, 5, 7, 9, 11];
 const harmonicMinorScalePattern = [0, 2, 3, 5, 7, 8, 11];
+const chromaticScalePattern = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 
 //CHORD PATTERNS
 const majorChordsPattern = [0, 4, 7];
@@ -101,18 +105,18 @@ function drawPianos() {
 
 function drawScalePiano() {
   // HTML de une scale (note C à B)
-  const htmlScale = `<div class="oneScale"><div class="noteC whiteNote note"></div>
+  const htmlScale = `<div class="oneScale"><div class="noteC noteBSharp whiteNote note"></div>
                      <div class="noteCSharp noteDFlat blackNote note"></div>
                      <div class="noteD whiteNote note"></div>
                      <div class="noteDSharp noteEFlat blackNote note"></div>
-                     <div class="noteE whiteNote note"></div>
-                     <div class="noteF whiteNote note"></div>
+                     <div class="noteE noteFFlat whiteNote note"></div>
+                     <div class="noteF noteESharp whiteNote note"></div>
                      <div class="noteFSharp noteGFlat blackNote note"></div>
                      <div class="noteG whiteNote note"></div>
                      <div class="noteGSharp noteAFlat blackNote note"></div>
                      <div class="noteA whiteNote note"></div>
                      <div class="noteASharp noteBFlat blackNote note"></div>
-                     <div class="noteB whiteNote note"></div></div>`;
+                     <div class="noteB noteCFlat whiteNote note"></div></div>`;
   const pianoElement = document.getElementById("piano");
   for (let i = 0; i < 2; i++) {
     pianoElement.innerHTML += htmlScale;
@@ -122,18 +126,18 @@ function drawScalePiano() {
 function drawChordPianos() {
   // HTML d'une scale pour représenter les accords
   const htmlChordsScale = `<div class="oneSmallScale">
-                           <div class="smallNoteC smallWhiteNote smallNote"></div>
+                           <div class="smallNoteC smallNoteBSharp smallWhiteNote smallNote"></div>
                            <div class="smallNoteCSharp smallNoteDFlat smallBlackNote smallNote"></div>
                            <div class="smallNoteD smallWhiteNote smallNote"></div>
                            <div class="smallNoteDSharp smallNoteEFlat smallBlackNote smallNote"></div>
-                           <div class="smallNoteE smallWhiteNote smallNote"></div>
-                           <div class="smallNoteF smallWhiteNote smallNote"></div>
+                           <div class="smallNoteE smallNoteFFlat smallWhiteNote smallNote"></div>
+                           <div class="smallNoteF smallNoteESharp smallWhiteNote smallNote"></div>
                            <div class="smallNoteFSharp smallNoteGFlat smallBlackNote smallNote"></div>
                            <div class="smallNoteG smallWhiteNote smallNote"></div>
                            <div class="smallNoteGSharp smallNoteAFlat smallBlackNote smallNote"></div>
                            <div class="smallNoteA smallWhiteNote smallNote"></div>
                            <div class="smallNoteASharp smallNoteBFlat smallBlackNote smallNote"></div>
-                           <div class="smallNoteB smallWhiteNote smallNote"></div>
+                           <div class="smallNoteB smallNoteCFlat smallWhiteNote smallNote"></div>
                            </div>`;
   // Insérer le HTML dans index.html
   littlePianosEl = document.getElementsByClassName("smallPiano");
@@ -318,6 +322,7 @@ function getFinalScaleKeysClasses(pianoScaleKeyIndexs) {
     ".noteD",
     ".noteDSharp",
     ".noteE",
+    ".noteESharp",
     ".noteF",
     ".noteFSharp",
     ".noteG",
@@ -346,6 +351,7 @@ function makeScaleArray(necessaryPattern, scale, keys) {
 
 function getFirstElementIdxInScale(keys) {
   notesPossible = [
+    "noteCFlat",
     "noteC",
     "noteCSharp",
     "noteDFlat",
@@ -353,6 +359,8 @@ function getFirstElementIdxInScale(keys) {
     "noteDSharp",
     "noteEFlat",
     "noteE",
+    "noteESharp",
+    "noteFFlat",
     "noteF",
     "noteFSharp",
     "noteGFlat",
@@ -363,6 +371,7 @@ function getFirstElementIdxInScale(keys) {
     "noteASharp",
     "noteBFlat",
     "noteB",
+    "noteBSharp"
   ];
 
   return keys.findIndex((k) => k.classList.contains(notesPossible[scaleNote]));
@@ -425,6 +434,7 @@ function getAllChordsClasses(arrayChordsIndexs, allChordsKeysStrings) {
     "smallNoteD",
     "smallNoteDSharp",
     "smallNoteE",
+    "smallNoteESharp",
     "smallNoteF",
     "smallNoteFSharp",
     "smallNoteG",
@@ -486,6 +496,7 @@ function setKeyOfEachChord(chordsKeysIndexs) {
     "D",
     "D#",
     "E",
+    "E#",
     "F",
     "F#",
     "G",
@@ -493,13 +504,16 @@ function setKeyOfEachChord(chordsKeysIndexs) {
     "A",
     "A#",
     "B",
+    "B#"
   ];
   const keysInScaleFlat = [
+    "Cb",
     "C",
     "Db",
     "D",
     "Eb",
     "E",
+    "Fb",
     "F",
     "Gb",
     "G",
