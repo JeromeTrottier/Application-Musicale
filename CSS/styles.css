@@ -41,6 +41,13 @@ main {
   justify-content: center;
   align-items: center;
 }
+.inputs {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 #container_scale .inputs select {
   color: black;
 }
@@ -88,6 +95,10 @@ span:last-child {
   color: orange;
 }
 
+.oneScale {
+  display: flex;
+  position: relative;
+}
 #piano {
   margin: 20px;
   height: 100px;
@@ -96,12 +107,101 @@ span:last-child {
   display: flex;
   box-shadow: 0px 5px 20px black;
 }
-
-.oneScale {
-  display: flex;
-  position: relative;
+#piano .oneScale .whiteNote {
+  width: 35px;
+  height: 96px;
+  border: solid 2px rgb(128, 128, 128);
+  background: linear-gradient(to bottom, rgb(29, 29, 29) 50%, orange 50%);
+  background-size: 100% 200%;
 }
 
+#piano .oneScale .blackNote {
+  width: 15px;
+  height: 58px;
+  border: solid 2px rgb(128, 128, 128);
+  /*background-color: rgb(29, 29, 29);*/
+  background: linear-gradient(to bottom, rgb(29, 29, 29) 50%, orange 50%);
+  background-size: 100% 200%;
+}
+
+.noteCSharp {
+  position: absolute;
+  left: 28px;
+}
+
+.noteDSharp {
+  position: absolute;
+  left: 63px;
+}
+
+.noteFSharp {
+  position: absolute;
+  left: 133px;
+}
+
+.noteGSharp {
+  position: absolute;
+  left: 168px;
+}
+
+.noteASharp {
+  position: absolute;
+  left: 203px;
+}
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: 1.75rem;
+  }
+  h2 {
+    font-size: 1.25rem;
+  }
+  h3 {
+    font-size: 1rem;
+  }
+  .inputs {
+    flex-flow: column;
+    align-items: center;
+  }
+  #piano {
+    display: flex;
+    margin: 20px;
+    height: 50px;
+    width: 242px;
+    box-shadow: 0px 5px 20px black;
+  }
+
+  #piano .oneScale .whiteNote {
+    width: 17px;
+    height: 46px;
+    border: solid 1px rgb(128, 128, 128);
+  }
+
+  #piano .oneScale .blackNote {
+    width: 8px;
+    height: 29px;
+    border: solid 1px rgb(128, 128, 128);
+  }
+
+  .noteCSharp {
+    left: 13px;
+  }
+
+  .noteDSharp {
+    left: 30px;
+  }
+
+  .noteFSharp {
+    left: 64px;
+  }
+
+  .noteGSharp {
+    left: 81px;
+  }
+
+  .noteASharp {
+    left: 98px;
+  }
+}
 @keyframes transitionHighlightedKeys {
   0% {
     background-position: 0% 0%;
@@ -148,48 +248,4 @@ span:last-child {
   100% {
     background: linear-gradient(to bottom, rgb(29, 29, 29) 50%, orange 50%);
   }
-}
-
-#piano .oneScale .whiteNote {
-  width: 35px;
-  height: 96px;
-  border: solid 2px rgb(128, 128, 128);
-  /*background-color: rgb(119, 119, 119);*/
-  background: linear-gradient(to bottom, rgb(29, 29, 29) 50%, orange 50%);
-  background-size: 100% 200%;
-  /*animation: transitionHighlightedKeys .7s 1 ease-in-out forwards;*/
-}
-
-#piano .oneScale .blackNote {
-  width: 15px;
-  height: 58px;
-  border: solid 2px rgb(128, 128, 128);
-  /*background-color: rgb(29, 29, 29);*/
-  background: linear-gradient(to bottom, rgb(29, 29, 29) 50%, orange 50%);
-  background-size: 100% 200%;
-}
-
-.noteCSharp {
-  position: absolute;
-  left: 28px;
-}
-
-.noteDSharp {
-  position: absolute;
-  left: 63px;
-}
-
-.noteFSharp {
-  position: absolute;
-  left: 133px;
-}
-
-.noteGSharp {
-  position: absolute;
-  left: 168px;
-}
-
-.noteASharp {
-  position: absolute;
-  left: 203px;
 }
