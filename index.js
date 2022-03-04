@@ -332,7 +332,6 @@ function getFinalScaleKeysClasses(pianoScaleKeyIndexs) {
   for (let i = 0; i < pianoScaleKeyIndexs.length; i++) {
     finalScaleClasses.push(scaleClasses[pianoScaleKeyIndexs[i]]);
   }
-  console.log(finalScaleClasses);
   return finalScaleClasses;
 }
 
@@ -403,10 +402,19 @@ function setChords() {
 
 function getScaleChordsPattern() {
   let ScaleChordsPattern;
-  if (scaleType === scaleTypesIndex.major) {
-    ScaleChordsPattern = MajorScaleChordsPattern;
-  } else {
-    ScaleChordsPattern = MinorScaleChordsPattern;
+  switch (scaleType) {
+    case 0:
+      ScaleChordsPattern = MajorScaleChordsPattern;
+      break;
+    case 1:
+      ScaleChordsPattern = MinorScaleChordsPattern;
+      break;
+    case 2:
+      ScaleChordsPattern = HarmonicMinorScaleChordsPattern;
+      break;
+    case 3:
+      ScaleChordsPattern = MelodicMinorScaleChordsPattern;
+      break;
   }
   return ScaleChordsPattern
 }
@@ -478,7 +486,6 @@ function drawChords(allChordsKeysStrings) {
 
 function getFirstIndexOfEachChord(arrayChordsIndexs) {
   const firstIndexs = [];
-  console.log(arrayChordsIndexs);
 
   for (let i = 0; i < arrayChordsIndexs.length; i++) {
     firstIndexs.push(arrayChordsIndexs[i][0]);
@@ -583,6 +590,7 @@ function getTypeOfEachChord() {
       typeOfChords = melodicMinorScaleChords;
       break;
   }
+  console.log(typeOfChords);
   return typeOfChords;
 }
 function displayTypeOfEachChord(typeOfChords) {
